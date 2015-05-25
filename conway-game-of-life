@@ -25,6 +25,82 @@ var checkAround = function(array, i, j){
 // console.log('should be 3: ', checkAround(test, 2, 1));
 // console.log('should be 3: ', checkAround(test, 2, 2));
 
+var addZeroes = function(matrix){
+  for (var i = 0; i < matrix.length; i++){
+    matrix[i].unshift(0);
+    matrix[i].push(0);
+  }
+  var rowLength = matrix[0].length; 
+  console.log("ROW LENGTH: ", rowLength);
+  var toBeAdded = Array.apply(null, new Array(rowLength)).map(Number.prototype.valueOf,0);
+  matrix.push(toBeAdded);
+  matrix.unshift(toBeAdded);
+  var result = matrix.slice();
+  return result;
+}
+
+var removeTop = function(matrix){
+  var count = 0; 
+  for (var i = 0; i < matrix[0].length; i++){
+    count += matrix[0][i];
+  }
+  if (count === 0){
+    matrix.shift();
+  }
+  return matrix;
+}
+
+var removeBot = function(matrix){
+  var count = 0; 
+  for (var i = 0; i < matrix[matrix.length-1].length; i++){
+    count += matrix[matrix.length-1][i];
+  }
+  if (count === 0){
+    matrix.pop();
+  }
+  return matrix;
+}
+
+var removeLeft = function(matrix){
+  var count = 0; 
+  for (var i = 0; i < matrix.length; i++){
+    count += matrix[i][0];
+  }
+  console.log(count);
+  var result = [];
+  for (var i = 0; i < great.length; i++){
+    result.push(great[i].slice());
+  }
+  if (count === 0){
+    for (var j = 0; j < matrix.length; j++){
+      result[j].shift();
+    }
+  }
+  return result;
+}
+
+var removeRight = function(matrix){
+  var count = 0; 
+  for (var i = 0; i < matrix.length; i++){
+    count += matrix[i][matrix.length-1];
+  }
+  console.log(count);
+  var result = [];
+  for (var i = 0; i < great.length; i++){
+    result.push(great[i].slice());
+  }
+  if (count === 0){
+    for (var j = 0; j < matrix.length; j++){
+      result[j].pop();
+    }
+  }
+  return result;
+}
+
+var great = addZeroes(test);
+console.log(great);
+var another = removeRight(great);
+console.log(another);
 
 function getGeneration(cells, generations){
 
