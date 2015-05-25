@@ -15,27 +15,20 @@ var checkAround = function(array, i, j){
   return count;
 }
 
-// console.log('should be 1: ', checkAround(test, 0, 0));
-// console.log('should be 3: ', checkAround(test, 0, 1));
-// console.log('should be 2: ', checkAround(test, 0, 2));
-// console.log('should be 4: ', checkAround(test, 1, 0));
-// console.log('should be 4: ', checkAround(test, 1, 1));
-// console.log('should be 2: ', checkAround(test, 1, 2));
-// console.log('should be 2: ', checkAround(test, 2, 0));
-// console.log('should be 3: ', checkAround(test, 2, 1));
-// console.log('should be 3: ', checkAround(test, 2, 2));
-
 var addZeroes = function(matrix){
+  var result = [];
   for (var i = 0; i < matrix.length; i++){
-    matrix[i].unshift(0);
-    matrix[i].push(0);
+    result.push(matrix[i].slice());
   }
-  var rowLength = matrix[0].length; 
-  console.log("ROW LENGTH: ", rowLength);
+  for (var i = 0; i < result.length; i++){
+    result[i].unshift(0);
+    result[i].push(0);
+  }
+  var rowLength = result[0].length; 
   var toBeAdded = Array.apply(null, new Array(rowLength)).map(Number.prototype.valueOf,0);
-  matrix.push(toBeAdded);
-  matrix.unshift(toBeAdded);
-  var result = matrix.slice();
+  result.push(toBeAdded);
+  result.unshift(toBeAdded);
+  var result = result.slice();
   return result;
 }
 
@@ -44,8 +37,12 @@ var removeTop = function(matrix){
   for (var i = 0; i < matrix[0].length; i++){
     count += matrix[0][i];
   }
-  if (count === 0){
+  while (count === 0){
     matrix.shift();
+    count = 0; 
+    for (var i = 0; i < matrix[0].length; i++){
+      count += matrix[0][i];
+    }
   }
   return matrix;
 }
@@ -55,8 +52,12 @@ var removeBot = function(matrix){
   for (var i = 0; i < matrix[matrix.length-1].length; i++){
     count += matrix[matrix.length-1][i];
   }
-  if (count === 0){
+  while (count === 0){
     matrix.pop();
+    var count = 0; 
+    for (var i = 0; i < matrix[matrix.length-1].length; i++){
+      count += matrix[matrix.length-1][i];
+    }
   }
   return matrix;
 }
@@ -66,14 +67,17 @@ var removeLeft = function(matrix){
   for (var i = 0; i < matrix.length; i++){
     count += matrix[i][0];
   }
-  console.log(count);
   var result = [];
-  for (var i = 0; i < great.length; i++){
-    result.push(great[i].slice());
+  for (var i = 0; i < matrix.length; i++){
+    result.push(matrix[i].slice());
   }
-  if (count === 0){
+  while (count === 0){
     for (var j = 0; j < matrix.length; j++){
       result[j].shift();
+    }
+    var count = 0; 
+    for (var i = 0; i < result.length; i++){
+      count += result[i][0];
     }
   }
   return result;
@@ -82,25 +86,31 @@ var removeLeft = function(matrix){
 var removeRight = function(matrix){
   var count = 0; 
   for (var i = 0; i < matrix.length; i++){
-    count += matrix[i][matrix.length-1];
+    count += matrix[i][matrix[i].length-1];
   }
-  console.log(count);
   var result = [];
-  for (var i = 0; i < great.length; i++){
-    result.push(great[i].slice());
+  for (var i = 0; i < matrix.length; i++){
+    result.push(matrix[i].slice());
   }
-  if (count === 0){
-    for (var j = 0; j < matrix.length; j++){
+  while (count === 0){
+    for (var j = 0; j < result.length; j++){
       result[j].pop();
+    }
+    var count = 0; 
+    for (var i = 0; i < result.length; i++){
+      count += result[i][result[i].length-1];
     }
   }
   return result;
 }
 
-var great = addZeroes(test);
-console.log(great);
-var another = removeRight(great);
-console.log(another);
+var removeZeroes = function(matrix){
+  matrix = removeTop(matrix);
+  matrix = removeBot(matrix);
+  matrix = removeLeft(matrix);
+  matrix = removeRight(matrix);
+  return matrix;
+}
 
 function getGeneration(cells, generations){
 
@@ -111,6 +121,7 @@ function getGeneration(cells, generations){
       result = prevWork;
       return;
     }
+    prevWork = addZeroes(prevWork);
     var work = [];
     for (var i = 0; i < prevWork.length; i++){
       work.push(prevWork[i].slice());
@@ -133,6 +144,7 @@ function getGeneration(cells, generations){
         }
       }
     }
+    work = removeZeroes(work);
 
     recurse(work, depth+1);
   }
@@ -141,5 +153,3 @@ function getGeneration(cells, generations){
   return result;
 
 }
-
-// getGeneration(test, 3);
