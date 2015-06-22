@@ -8,7 +8,5 @@ MinHeap.prototype.push = function(value){
 }
 
 MinHeap.prototype.pop = function(){
-  var result = Math.min.apply(this, this.storage);
-  this.storage.splice(this.storage.indexOf(result), 1);
-  return result;
+  return this.storage.splice(this.storage.indexOf(Math.min.apply(this, this.storage)), 1)[0];
 }
