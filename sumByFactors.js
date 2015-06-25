@@ -33,7 +33,6 @@ var getPrimesBelow = function(input){
 }
 
 function sumOfDivided(lst) {
-  //your code
   var work = {};
   for (var i = 0; i < lst.length; i++){
     var current = getPrimesBelow(Math.abs(lst[i]));
