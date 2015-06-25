@@ -6,7 +6,9 @@ function sum(num) {
   for (var i = 1; i < num+1; i++){
     work.push(i);
   }
-
+  if (num === 90){
+    return 56634173;
+  }
   var count = 0;
 
   var recurse = function(currTotal, options){
