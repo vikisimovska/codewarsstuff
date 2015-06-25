@@ -2,7 +2,6 @@
 
 function solution(input, markers){
   var work = input.split('\n');
-  console.log(work);
 
   var preResult = [];
   for (var i = 0; i < work.length; i++){
@@ -20,6 +19,5 @@ function solution(input, markers){
     }
     preResult.push(current);
   }
-  console.log(preResult);
   return preResult.join('\n');
 }
