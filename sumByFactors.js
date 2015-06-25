@@ -34,7 +34,6 @@ var getPrimesBelow = function(input){
 
 function sumOfDivided(lst) {
   //your code
-  console.log("INPUT LIST: ", lst);
   var work = {};
   for (var i = 0; i < lst.length; i++){
     var current = getPrimesBelow(Math.abs(lst[i]));
@@ -53,6 +52,5 @@ function sumOfDivided(lst) {
     var current = [Number(key), work[key]];
     result.push(current);
   }
-  console.log("THE RESULT: ", result);
   return result;
 }
