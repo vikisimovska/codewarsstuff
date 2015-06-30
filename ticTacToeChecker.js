@@ -99,5 +99,16 @@ var checkForCompletion = function(board){
 }
 
 function isSolved(board) {
-
+  if (xAllCheck(board)){
+    return 1;
+  }
+  else if (oAllCheck(board)){
+    return 2;
+  }
+  else if (checkForCompletion(board)){
+    return 0;
+  }
+  else {
+    return -1;
+  }
 }
