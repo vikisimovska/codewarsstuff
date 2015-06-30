@@ -3,11 +3,14 @@
 function domainName(url){
   console.log(url);
   var work = url.split('.');
-  console.log(url);
-  console.log(work);
   if (url.indexOf('www') > -1){
     return work[1];
   }
   work = work[0];
   console.log(work);
+  if (work.indexOf('://') > -1){
+    work = work.split('://');
+    return work[1];
+  }
+  return work;
 }
