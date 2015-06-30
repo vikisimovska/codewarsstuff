@@ -2,15 +2,11 @@
 
 function makeLooper(str) {
   // TODO: return a function that loops through 'str' on successive invocations
-  var strLength = str.length;
-  var counter = (counter)? counter : 0;
+  this.work = str;
+  this.workLength = str.length;
+  this.counter = 0;
 
-  var inner = function(){
-    var counter = (counter)? counter : 0;
-    return str[counter % strLength];
-    counter++;
-  }
-
-  return inner;
+  this.counter++;
+  return this.work[counter % this.workLength];
 }
 
