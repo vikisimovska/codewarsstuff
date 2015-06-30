@@ -1,14 +1,29 @@
 //http://www.codewars.com/kata/52a89c2ea8ddc5547a000863/train/javascript
 
 function loop_size(node){
-  var counter = 0;
-  var current = node;
-  while (current.value === undefined){
-    current.value = counter;
-    current = current.next;
-    counter++;
+  var work1 = node;
+  var work2 = node.next;
+  
+  // make work2 the faster traveling one;
+  var advanceToggle = false;
+  
+  while (work1 !== work2){
+    work2 = work2.next;
+    if (advanceToggle){
+      work1 = work1.next;
+      advanceToggle = false;
+    }else {
+      advanceToggle = true;
+    }
   }
-  console.log("THE COUNTER: ", counter);
-  console.log("NODE: ", node.value);
-  return (counter - node.value);
+  
+  var counter = 1;
+  work2 = work2.next;
+  
+  while (work1 !== work2){
+    counter++;
+    work2 = work2.next;
+  }
+  
+  return counter;
 }
