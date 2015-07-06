@@ -47,9 +47,22 @@ var stillLetters = function(triplets){
 }
 
 var removeAddedLetter = function(triplets, letter){
-  
+  for (var i = 0; i < triplets.length; i++){
+    if (triplets[i].indexOf(letter) > -1){
+      triplets[i].splice(triplets[i].indexOf(letter), 1);
+    }
+  }
+  return triplets;
 }
 
 var recoverSecret = function(triplets) {
-  var work = [];
+  var result = "";
+
+  while (stillLetters(triplets)){
+    var letter = appearsInFront(triplets);
+    result += letter;
+    triplets = removeAddedLetter(triplets, letter);
+  }
+
+  return result;
 }
