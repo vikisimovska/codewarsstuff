@@ -1,6 +1,6 @@
 // http://www.codewars.com/kata/53f40dff5f9d31b813000774/train/javascript
 
-inputStrings = [
+var inputStrings = [
   ['t','u','p'],
   ['w','h','i'],
   ['t','s','u'],
@@ -37,6 +37,16 @@ var appearsInFront = function(triplets){
 }
 
 var stillLetters = function(triplets){
+  var check = false;
+  for (var i = 0; i < triplets.length; i++){
+    if (triplets[i].length > 0){
+      check = true;
+    }
+  }
+  return check;
+}
+
+var removeAddedLetter = function(triplets, letter){
   
 }
 
