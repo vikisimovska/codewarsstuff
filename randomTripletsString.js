@@ -19,7 +19,25 @@ var appearsInFront = function(triplets){
       possible[triplets[i][0]] = true;
     }
   }
-  console.log(possible);
+  possible = Object.keys(possible);
+  var onlyAtFront;
+  for (var i = 0; i < possible.length; i++){
+    var check = true;
+    for (var j = 0; j < triplets.length; j++){
+      var temp = triplets[j].slice(1);
+      if (temp.length > -1 && temp.indexOf(possible[i]) > -1){
+        check = false;
+      }
+    }
+    if (check){
+      onlyAtFront = possible[i];
+    }
+  }
+  return onlyAtFront;
+}
+
+var stillLetters = function(triplets){
+  
 }
 
 var recoverSecret = function(triplets) {
