@@ -4,7 +4,7 @@ function makeLooper(str) {
   // TODO: return a function that loops through 'str' on successive invocations
   this.work = str;
   this.workLength = str.length;
-  this.counter = 0;
+  this.counter = (this.counter)? this.counter : 0
 
   this.counter++;
   return this.work[counter % this.workLength];
