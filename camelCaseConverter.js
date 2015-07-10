@@ -16,7 +16,6 @@ function toUnderscore(string) {
   }
   work = work.split(' ');
   work = work.join('_');
-  console.log(work);
   return work;
 }
 
