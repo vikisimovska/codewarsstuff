@@ -23,11 +23,11 @@ var fakePuzzle = [
             [5,3,1,1,7,1,1,1,1],
                                 ];
 
-var findMissingNumInRow = function(row){
+var findAvailableNumInRow = function(row){
   return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(function(value){return row.indexOf(value) > -1});
 }
 
-var findMissingNumInCol = function(puzzle, rowIndex){
+var findAvailableNumInCol = function(puzzle, rowIndex){
   var work = [];
   for (var i = 0; i < 9; i++){
     work.push(puzzle[i][rowIndex]);
@@ -35,7 +35,7 @@ var findMissingNumInCol = function(puzzle, rowIndex){
   return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(function(value){return work.indexOf(value) > -1});
 }
 
-var findMissingNumInBox = function(puzzle, colIndex, rowIndex){
+var findAvailableNumInBox = function(puzzle, colIndex, rowIndex){
   var startY = (colIndex < 3)? 0 : (colIndex < 6)? 3: 6;
   var startX = (rowIndex < 3)? 0 : (rowIndex < 6)? 3: 6;
   var work = [];
@@ -45,6 +45,13 @@ var findMissingNumInBox = function(puzzle, colIndex, rowIndex){
     }
   }
   return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(function(value){return work.indexOf(value) > -1});
+}
+
+var findMissingNumForPoint = function(puzzle, colIndex, rowIndex){
+  var work = findAvailableNumInRow(puzzle[colIndex]);
+  work = work.concat(findAvailableNumInCol(puzzle, rowIndex));
+  work = work.concat(findAvailableNumInBox(puzzle, colIndex, rowIndex));
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(function(value){return work.indexOf(value) === -1});
 }
 
 // probably don't really need to use this
@@ -61,8 +68,18 @@ var isNotSolved = function(puzzle){
 }
 
 function sudoku(puzzle) {
+  var work;
   while (isNotSolved(puzzle)){
-    
+    for (var colIndex = 0; colIndex < puzzle.length; colIndex++){
+      for (var rowIndex = 0; rowIndex < puzzle[colIndex].length; rowIndex++){
+        if (puzzle[colIndex][rowIndex] === 0){
+          work = findMissingNumForPoint(puzzle, colIndex, rowIndex);
+          if (work.length === 1){
+            puzzle[colIndex][rowIndex] = work[0];
+          }
+        }
+      }
+    }
   }
   return puzzle;
 }
