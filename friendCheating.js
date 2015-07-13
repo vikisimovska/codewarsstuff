@@ -11,9 +11,14 @@ var sumFromOneToN = function(n, remove1, remove2){
 }
 
 function removeNb (n) {
+  console.log(n);
+  var limit = sumFromOneToN(n);
   var work = [];
   for (var i = 1; i < n; i++){
     for (var j = i+1; j < n+1; j++){
+      if (i*j > limit){
+        break;
+      }
       if (sumFromOneToN(n, i, j) === i * j){
         work.push([i, j]);
         work.push([j, i]);
