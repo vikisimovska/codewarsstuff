@@ -47,7 +47,7 @@ var Harshad = ( function() {
      * @function Harshad.getSerie
      */
     getSerie: function( count, start ) {
-      // Your implementation goes here
+      start = (start !== undefined)? start : 
     }
   };
 
