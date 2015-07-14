@@ -17,7 +17,11 @@ var Harshad = ( function() {
      * @function Harshad.isValid
      */
     isValid: function( number ) {
-      // Your implementation goes here
+      var individualDigs = number.toString().split('');
+      var sumDigs = individualDigs.reduce(function(prev, curr){
+        return prev + Number(curr);
+      }, 0)
+      return number % sumDigs === 0;
     },
     /**
      * Gets the next Harshad number after the given number.
@@ -27,7 +31,11 @@ var Harshad = ( function() {
      * @function Harshad.getNext
      */
     getNext: function( number ) {
-      // Your implementation goes here
+      number++;
+      while (!this.isValid(number)){
+        number++;
+      }
+      return number;
     },
     /**
      * Returns the suite of Harshad numbers, starting after a given number.
