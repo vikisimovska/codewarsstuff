@@ -47,7 +47,15 @@ var Harshad = ( function() {
      * @function Harshad.getSerie
      */
     getSerie: function( count, start ) {
-      start = (start !== undefined)? start : 
+      start = (start !== undefined)? start+1 : 1; 
+      var work = [];
+      while (work.length < count){
+        if (this.isValid(start)){
+          work.push(start);
+        }
+        start++;
+      }
+      return work;
     }
   };
 
