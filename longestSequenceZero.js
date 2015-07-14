@@ -5,12 +5,16 @@ var sumArrayValues = function(arr){
 }
 
 var maxZeroSequence = function(arr) {
-  console.log(arr);
   var work = [];
+  var count;
   for (var i = 0; i < arr.length-1; i++){
-    for (var j = i+2; j < arr.length+1; j++){
-      if (sumArrayValues(arr.slice(i, j)) === 0 && arr.slice(i, j).length > work.length){
-        work = arr.slice(i, j);
+    count = 0;
+    for (var j = i+1; j < arr.length; j++){
+      count += arr[j];
+      if (count === 0){
+        if (arr.slice(i, j+1).length > work.length){
+          work = arr.slice(i, j+1);
+        }
       }
     }
   }
