@@ -6,3 +6,9 @@ function brainLuck(code, input){
 
 // will want to use String.fromCharCode(65) to get "A"; 
 
+// will want to use "A".charCodeAt(0) to get 65; 
+
+// will want to use Array.apply(null, Array(5)).map(Number.prototype.valueOf,0) to get array of zeroes;
+
+// pointer will start at 0; pointer = 0;
+
