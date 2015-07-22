@@ -10,5 +10,6 @@ function brainLuck(code, input){
 
 // will want to use Array.apply(null, Array(5)).map(Number.prototype.valueOf,0) to get array of zeroes;
 
-// pointer will start at 0; pointer = 0;
+// arrayPointer will start at 0; pointer = 0;
 
+// codePointer will start at 0 as well; will leave while loop when codePointer exceeds length of code
