@@ -4,3 +4,5 @@ function brainLuck(code, input){
   return output;
 }
 
+// will want to use String.fromCharCode(65) to get "A"; 
+
