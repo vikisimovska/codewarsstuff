@@ -66,13 +66,21 @@ function brainLuck(code, input){
     if (code[codePointer] === '>'){
       workPointer++;
       codePointer++;
-      console.log('hit here');
-      continue;
-    }else if (code[codePointer] === "<"){
+    }else if (code[codePointer] === '<'){
       workPointer--;
       codePointer++;
-      console.log('hit here too');
-      continue;
+    }else if (code[codePointer] === '+'){
+      work.increment(workPointer);
+      codePointer++;
+    }else if (code[codePointer] === '-'){
+      work.decrement(workPointer);
+      codePointer++;
+    }else if (code[codePointer] === '.'){
+      result += String.fromCharCode(work[workPointer]);
+      codePointer++;
+    }else if (code[codePointer] === ','){
+      // START HERE!!!!!!!!!!!!!!!!!!!!!!
+      work[workPointer] = 
     }
 
   }
