@@ -62,6 +62,9 @@ function brainLuck(code, input){
   // of brainfuck
   var result = '';
 
+  // create variable for temporary work on inputs
+  var currInput;
+
   while (codePointer < codeLength){
     if (code[codePointer] === '>'){
       workPointer++;
@@ -79,7 +82,7 @@ function brainLuck(code, input){
       result += String.fromCharCode(work[workPointer]);
       codePointer++;
     }else if (code[codePointer] === ','){
-      // START HERE!!!!!!!!!!!!!!!!!!!!!!
+
       work[workPointer] = 
     }
 
