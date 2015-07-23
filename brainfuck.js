@@ -10,11 +10,14 @@ var removeSpaces = function(string){
 var createPortals = function(string){
   var work = {};
   var stack = [];
+  var temp;
   for (var i = 0; i < string.length; i++){
     if (string[i] === "["){
       stack.push(i);
     }else if (string[i] === "]"){
-      work[i] = stack.pop();
+      temp = stack.pop();
+      work[i] = temp;
+      work[temp] = i;
     }
   }
   return work;
@@ -82,22 +85,23 @@ function brainLuck(code, input){
       result += String.fromCharCode(work[workPointer]);
       codePointer++;
     }else if (code[codePointer] === ','){
-
-      work[workPointer] = 
+      currInput = input.shift();
+      work[workPointer] = currInput.charCodeAt(0);
+      codePointer++;
+    }else if (code[codePointer] === '['){
+      if (work[workPointer] === 0){
+        codePointer = portals[codePointer] + 1;
+      }else {
+        codePointer++;
+      }
+    }else if (code[codePointer] === ']'){
+      if (work[workPointer] === 0){
+        codePointer++;
+      }else {
+        codePointer = portals[codePointer] + 1;
+      }
     }
 
   }
-  console.log('completed');
+  return result;
 }
-
-// will want to use String.fromCharCode(65) to get "A"; 
-
-// will want to use "A".charCodeAt(0) to get 65; 
-
-// will want to use Array.apply(null, Array(5)).map(Number.prototype.valueOf,0) to get array of zeroes;
-
-// arrayPointer will start at 0; pointer = 0;
-
-// codePointer will start at 0 as well; will leave while loop when codePointer exceeds length of code
-
-brainLuck('<><><>', '');
