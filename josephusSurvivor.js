@@ -1,0 +1,3 @@
+function josephusSurvivor(n,k){
+  
+}
