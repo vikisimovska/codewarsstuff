@@ -11,7 +11,13 @@ function orderWeight(input) {
     }else if (aSplitUp > bSplitUp){
       return 1;
     }else {
-      return 0;
+      if (a.toString() < b.toString()){
+        return -1;
+      }else if (a.toString() > b.toString()){
+        return 1;
+      }else {
+        return 0;
+      }
     }
   }
 
@@ -19,5 +25,5 @@ function orderWeight(input) {
     return compareWaz(a, b);
   })
 
-  return work;
+  return (work.length !== 1)? work.join(' ') : '';
 }
