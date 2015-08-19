@@ -31,9 +31,6 @@ function fleschKincaid(text){
       vowelCount += vowelNumber(word.toLowerCase());
     })
   })
-  console.log("WORD COUNT: ", wordCount);
-  console.log("VOWEL COUNT: ", vowelCount);
-  console.log("SENTENCE COUNT: ", sentenceCount);
   var averageWords = wordCount / sentenceCount;
   var averageSyllable = vowelCount / wordCount;
   var result = (0.39 * averageWords) + (11.8 * averageSyllable) - 15.59;
