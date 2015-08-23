@@ -1,5 +1,5 @@
 function solution(roman){
-  
+  console.log(roman);
   var lib = {
     'M': 1000,
     'D': 500,
@@ -12,13 +12,9 @@ function solution(roman){
 
   var count = 0;
 
-  for (var i = 0; i < roman.length; i++){
-    if (lib[roman[i+1]] !== undefined && lib[roman[i]] < lib[roman[i+1]]){
-      count -= lib[roman[i]];
-    }else {
-      count += lib[roman[i]];
-    }
-  }
+  roman.split('').forEach(function(value, index, collection){
+    count += (collection[index+1] !== undefined && lib[value] < lib[collection[index+1]])? - lib[value] : lib[value];
+  })
 
   return count;
 }
