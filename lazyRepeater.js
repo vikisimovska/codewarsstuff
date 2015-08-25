@@ -1,3 +1,15 @@
 function makeLooper(str) {
-  // TODO: return a function that loops through 'str' on successive invocations
+  var work = str;
+  var counter = 0;
+
+  var runThrough = function(){
+    var result = work[counter];
+    counter++;
+    if (counter === work.length){
+      counter = 0;
+    }
+    return result;
+  }
+
+  return runThrough;
 }
