@@ -1,7 +1,6 @@
 var makeCamel = function(word){
   word = word.toLowerCase();
   word = word[0].toUpperCase() + word.slice(1);
-  console.log(word);
   return word;
 }
 
@@ -15,7 +14,6 @@ function toCamelCase(str){
     return makeCamel(word);
 
   })
-  console.log(work.join(''));
   return work.join('');
 }
 
