@@ -18,15 +18,3 @@ function flattenMap(map) {
   traverse([], map);
   return result;
 }
-
-var test = {
-  'a': {
-    'b': {
-      'c': 12,
-      'd': 'Hello World'
-    },
-    'e': [1,2,3]
-  }
-};
-
-flattenMap(test);
