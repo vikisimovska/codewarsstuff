@@ -1,5 +1,4 @@
 function getHashtags(post) {
-  console.log(post);
   
   var work = [];
   var lib = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
