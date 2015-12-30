@@ -18,5 +18,6 @@ function getHashtags(post) {
       }
     }
   })
+  
   return work;
 }
