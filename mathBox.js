@@ -11544,17 +11544,23 @@ var findUnique = function(first, second, third, fourth, firstSecond){
     otherWork[key] = {};
   })
 
+  var solution = {};
+
   for (var key in otherWork){
     fourth.forEach(function(quad){
       var compareQuad = convertKeyToQuad(key);
       if (noOverlap(compareQuad, quad)){
         var newKey = quad.join('_');
         otherWork[key][newKey] = {};
+        var check = quad.concat(compareQuad).sort().join('_');
+        if (firstSecond[check] !== undefined){
+          solution[[firstSecond[check], compareQuad, quad]] = true;
+        }
       }
     })
   }
   
-  
+  return solution;
   
 }
 
