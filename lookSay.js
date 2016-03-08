@@ -2,17 +2,14 @@
 
 function lookSay(number){
   var work = number.toString();
-
   var pointer = 1;
   var current = work[0];
   var result = [];
   var count = 1;
 
   while (pointer < work.length){
-
     if (work[pointer] !== current){
-      result.push(count);
-      result.push(current);
+      result.push(count, current);
       current = work[pointer];
       count = 1;
     } else {
@@ -21,8 +18,7 @@ function lookSay(number){
     pointer++;
   }
 
-  result.push(count);
-  result.push(current);
+  result.push(count, current);
   return parseInt(result.join(''));
 }
 
