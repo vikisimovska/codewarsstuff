@@ -12,9 +12,26 @@ var StackedDeck = function(cheatCode) {
       })
     })
 
+  if (cheatCode !== undefined){
+    for (var i = 0; i < cheatCode; i++){
+      this.shuffle();
+    }
+  }
+
+  this.times = 0;
     
 }
 StackedDeck.prototype.shuffle = function () {
   var daDeck = this.shuffledDeck;
-  this.shuffledDeck.push(daDeck.shift());
+  var switchIndex = this.times % 52;
+  var temp = this.shuffledDeck[switchIndex];
+
+  this.shuffledDeck[switchIndex] = this.shuffledDeck[51];
+  this.shuffledDeck[51] = temp;
+  this.times++;
 }
+
+
+
+
+
