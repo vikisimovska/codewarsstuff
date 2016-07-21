@@ -1,3 +1,3 @@
 function validate(password) {
-  return /^[a-zA-Z]{3,}$/.test(password);
+  return /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d){6,}$/.test(password);
 }
